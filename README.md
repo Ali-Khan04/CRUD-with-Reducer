@@ -1,12 +1,18 @@
-# React + Vite
+# Reducer CRUD Practice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React practice project focusing on state management with useReducer.
 
-Currently, two official plugins are available:
+## Features
+- ✅ Todo list with add/edit/delete (array CRUD)
+- ✅ React Router navigation
+- ✅ Context API for global state
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- React 18
+- useReducer for state management
+- React Router
+- Context API
+- CSS3 (Dark theme)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Purpose
+Built to practice and demonstrate CRUD operations using React's useReducer hook for both object manipulation and array management.
