@@ -1,0 +1,84 @@
+/* Dark theme base */
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main container */
+.main-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #121212;
+}
+
+/* Edit container (form wrapper) */
+.edit-container,
+.todoInput-container {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* User input display (non-edit mode) */
+.user-input {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.user-input p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}
+
+/* Inputs */
+.edit-container,
+.todoInput-container input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: border 1s ease, background 1s ease;
+}
+
+.edit-container,
+.todoInput-container input:focus {
+  outline: none;
+  border: 1px solid #bb86fc;
+  background-color: #333;
+}
+
+/* Buttons */
+.btn {
+  margin-top: 1rem;
+
+  width: 300px;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #bb86fc, #6a4bc7);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
