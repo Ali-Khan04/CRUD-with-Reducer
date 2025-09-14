@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
+import userRouter from "./routes/userRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -15,6 +16,7 @@ mongoose
 app.get("/", (req, res) => {
   res.json({ success: true, message: "Server is set up and running" });
 });
+app.use("/user", userRouter);
 app.use((err, req, res, next) => {
   const message = err.message || "Internal Server Error";
   const statusCode = err.statusCode || 500;
