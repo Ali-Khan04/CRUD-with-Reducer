@@ -11,7 +11,17 @@ const initialState = {
     title: "",
     goal: "",
   },
+  signIn: {
+    email: "",
+    password: "",
+  },
+  signUp: {
+    name: "",
+    email: "",
+    password: "",
+  },
   todo: [],
+  setPassword: false,
   isEditing: null,
   isLoading: false,
 };
@@ -50,6 +60,17 @@ const reducer = (state, action) => {
           item.id === action.payload.id ? { ...item, ...action.payload } : item
         ),
       };
+
+    case "SignIn":
+      return {
+        ...state,
+        signIn: { ...state.signIn, [action.payload.id]: action.payload.value },
+      };
+    case "SignUp":
+      return {
+        ...state,
+        signUp: { ...state.signUp, [action.payload.id]: action.payload.value },
+      };
     case "deleteTodo":
       return {
         ...state,
@@ -59,6 +80,8 @@ const reducer = (state, action) => {
       return { ...state, isEditing: action.payload };
     case "isLoading":
       return { ...state, isLoading: action.payload };
+    case "setPassword":
+      return { ...state, setPassword: action.payload };
     default:
       return state;
   }

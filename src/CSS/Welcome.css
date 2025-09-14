@@ -1,0 +1,71 @@
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #fff;
+  padding: 1rem;
+}
+
+.welcome-box {
+  background-color: #1e1e1e;
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+.welcome-box h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #bb86fc;
+}
+
+.welcome-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.welcome-box .highlight {
+  color: #8b5cf6;
+  font-weight: bold;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.action-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #bb86fc, #6a4bc7);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.action-btn:hover {
+  background: linear-gradient(135deg, #d4a8ff, #8b5cf6);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .welcome-box {
+    padding: 2rem 1.5rem;
+  }
+  .button-group {
+    flex-direction: column;
+  }
+  .action-btn {
+    width: 100%;
+  }
+}
