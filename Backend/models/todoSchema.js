@@ -13,6 +13,11 @@ const todoSchema = new mongoose.Schema(
       maxlength: [300, "Description exceeds its limit"],
       required: [true, "Description is Required"],
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CrudUser",
+      required: [true, "User ID is required"],
+    },
   },
   { timestamps: true }
 );

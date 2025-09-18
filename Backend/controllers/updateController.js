@@ -40,7 +40,7 @@ export const updateTodo = async (req, res, next) => {
       message: "User Todo Updated!",
       updatedTodo: {
         user: validUser.id,
-        todo: updateData.id,
+        id: savedTodo._id.toString(),
         title: updateData.title,
         goal: updateData.goal,
       },

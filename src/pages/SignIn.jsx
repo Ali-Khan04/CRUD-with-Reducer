@@ -2,19 +2,49 @@ import { UserContext } from "../Context/UserContext";
 import { useContext } from "react";
 import "../CSS/SignUp.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
   const { state, dispatch } = useContext(UserContext);
+  const navigate = useNavigate();
   const handleInput = (e) => {
     dispatch({
       type: "SignIn",
       payload: { id: e.target.id, value: e.target.value },
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = state.signIn;
-    console.log(`User Data : email : ${email} password: ${password}`);
+    try {
+      const res = await fetch("http://localhost:3000/user/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        dispatch({ type: "user", payload: data.user });
+        dispatch({ type: "successMessage", payload: true });
+        dispatch({ type: "errorMessage", payload: false });
+        setTimeout(() => {
+          navigate("/todo");
+        }, 100);
+      } else {
+        dispatch({ type: "successMessage", payload: false });
+        dispatch({ type: "errorMessage", payload: true });
+      }
+    } catch (error) {
+      console.error("Erro Sigining In", error);
+      dispatch({ type: "successMessage", payload: false });
+      dispatch({ type: "errorMessage", payload: true });
+    }
+    setTimeout(() => {
+      dispatch({ type: "clearMessage" });
+    }, 2000);
   };
   return (
     <div className="signUp-container">
@@ -65,6 +95,10 @@ function SignIn() {
         >
           No account? Sign Up!
         </Link>
+        {state.successMessage && (
+          <p style={{ color: "green" }}> Sign In Successfull</p>
+        )}
+        {state.errorMessage && <p style={{ color: "red" }}>Error Signing In</p>}
       </div>
     </div>
   );

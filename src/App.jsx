@@ -12,7 +12,7 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<Welcome />} />
-          <Route path="userInfo" element={<UserInput />} />
+          <Route path="/userInfo" element={<UserInput />} />
           <Route path="/todo" element={<RenderTodo />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />

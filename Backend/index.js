@@ -4,11 +4,19 @@ import mongoose from "mongoose";
 import cors from "cors";
 import userRouter from "./routes/userRoutes.js";
 import todoRouter from "./routes/todoRoutes.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 const app = express();
+app.use(cookieParser());
+
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 mongoose
   .connect(process.env.MONGO)
   .then(() => console.log("Connected to MongoDb"))

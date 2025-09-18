@@ -18,7 +18,7 @@ function UserInput() {
   };
   return (
     <div className="main-container">
-      <h1>User Info</h1>
+      {state.user ? `${state.user.name} Info` : "User Info"}
       {state.isEditing ? (
         <div className="edit-container">
           <form onSubmit={handleSubmit}>

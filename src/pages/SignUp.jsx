@@ -2,21 +2,44 @@ import { UserContext } from "../Context/UserContext";
 import { useContext } from "react";
 import "../CSS/SignUp.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const { state, dispatch } = useContext(UserContext);
+  const navigate = useNavigate();
   const handleInput = (e) => {
     dispatch({
       type: "SignUp",
       payload: { id: e.target.id, value: e.target.value },
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = state.signUp;
-    console.log(
-      `User Data : name : ${name} email : ${email} password: ${password}`
-    );
+    try {
+      const res = await fetch("http://localhost:3000/user/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ name, email, password }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        dispatch({ type: "successMessage", payload: true });
+        dispatch({ type: "errorMessage", payload: false });
+        setTimeout(() => {
+          navigate("/signin");
+        }, 1000);
+      } else {
+        dispatch({ type: "successMessage", payload: false });
+        dispatch({ type: "errorMessage", payload: true });
+      }
+    } catch (error) {
+      dispatch({ type: "successMessage", payload: false });
+      dispatch({ type: "errorMessage", payload: true });
+    }
   };
   return (
     <div className="signUp-container">
@@ -75,6 +98,12 @@ function SignUp() {
         >
           Have a Account? Sign In!
         </Link>
+        {state.successMessage && (
+          <p style={{ color: "green" }}>Account Created !</p>
+        )}
+        {state.errorMessage && (
+          <p style={{ color: "red" }}>Error Creating Account!</p>
+        )}
       </div>
     </div>
   );
